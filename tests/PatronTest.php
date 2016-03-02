@@ -1,5 +1,10 @@
 <?php
 
+	/**
+	* @backupGlobals disabled
+	* @backupStaticAttributes disabled
+	*/
+
 	$server = "mysql:host=localhost;dbname=library_test";
 	$username = "root";
 	$password = "root";
