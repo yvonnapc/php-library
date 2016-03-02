@@ -40,17 +40,24 @@
 
 		function receiveGoods()
 		{
-			// $GLOBALS['DB']->exec(
-			// 	"INSERT INTO copies
-			// 	 (book_id, checked_out)
-			// 	 VALUES
-			// 	 ({$book_id}, 0)"
-			// );
+			$GLOBALS['DB']->exec(
+				"INSERT INTO copies
+				 (book_id, checked_out)
+				 VALUES
+				 ({$this->getId()}, 0)"
+			);
 		}
 
 		function getAvailable()
 		{
-
+			$query = $GLOBALS['DB']->query(
+				"SELECT COUNT(*) as 'available'
+				FROM copies
+				WHERE book_id = {$this->getId()} and checked_out = 0;"
+			);
+			$result = $query->fetchAll(PDO::FETCH_ASSOC);
+			var_dump($result[0]['available']);
+			return $result[0]['available'];
 		}
 
 		static function getAll()
