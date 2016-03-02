@@ -103,6 +103,22 @@
 			//Assert
 			$this->assertEquals([],$result);
 		}
+
+		function test_update()
+		{
+			//Arrange
+			$name = "Raymond Carver";
+			$test_author = new Author($name);
+			$test_author->save();
+
+			$new_name = "Junot Diaz";
+
+			//Act
+			$test_author->update($new_name);
+
+			//Assert
+			$this->assertEquals("Junot Diaz", $test_author->getName());
+		}
 	}
 
 ?>

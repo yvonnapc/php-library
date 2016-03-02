@@ -1,13 +1,23 @@
-<?php 
+<?php
 
-	require_once __DIR__.'/../vendor/autoload.php'; 
+	require_once __DIR__.'/../vendor/autoload.php';
 
-	$app = new Silex\Application(); 
+	$app = new Silex\Application();
 
-	$app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views')); 
+	$server = 'mysql:host=localhost;dbname=university';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
-	$app->get('/', function(){return 'Hello, World!';}); 
+	$app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
-	return $app; 
+	use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
+	$app->get('/', function() use($app){
+		return $app['twig']->render('index.html.twig');
+	});
+
+	return $app;
 
 ?>

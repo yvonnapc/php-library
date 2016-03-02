@@ -88,6 +88,11 @@
 			//Assert
 			$this->assertEquals($test_patron2, $result);
 		}
+
+		function test_delete()
+		{
+
+		}
 	}
 
 ?>
