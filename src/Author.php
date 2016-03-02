@@ -52,5 +52,10 @@
 		{
 			$GLOBALS['DB']->exec("DELETE FROM authors");
 		}
+
+		static function find($id)
+		{
+			
+		}
 	}
  ?>

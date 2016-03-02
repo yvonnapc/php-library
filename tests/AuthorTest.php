@@ -68,6 +68,20 @@
 			//Assert
 			$this->assertEquals([], $result);
 		}
+
+		function test_find()
+		{
+			//Arrange
+			$name = "Jason Awbrey";
+			$test_author = new Author($name);
+			$test_author->save();
+
+			//Act
+			$result = Author::find($test_author->getId());
+
+			//Assert
+			$this->assertEquals([$test_author], $result);
+		}
 	}
 
 ?>
