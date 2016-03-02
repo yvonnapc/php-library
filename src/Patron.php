@@ -56,7 +56,11 @@
 
 		function delete()
 		{
-			// $GLOBALS['DB']->exec("DELETE FROM patrons WHERE id = {$this->findId()};");
+			$GLOBALS['DB']->exec(
+			"DELETE p, c
+			FROM patrons p
+			JOIN checkouts c ON (p.id = c.patron_id)
+			WHERE p.id = {$this->getId()};");
 		}
 
 		static function find($search_id)

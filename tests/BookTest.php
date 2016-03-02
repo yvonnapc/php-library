@@ -122,6 +122,42 @@
 			$this->assertEquals("Not Cathedral", $test_book->getTitle());
 		}
 
+		function test_getAvailable()
+		{
+			//Arrange
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+
+			//Act
+			$test_book->receiveGoods();
+			$test_book->receiveGoods();
+			$result = $test_book->getAvailable();
+
+			//Assert
+			$this->assertEquals(2, $result);
+		}
+
+		function test_receiveGoods()
+		{
+			//Arrange
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			//Act
+			$test_book->receiveGoods();
+			$result = $test_book->getAvailable();
+
+			//Assert
+			$this->assertEquals(1, $result);
+		}
+		// function test_checkout()
+		// {
+		//
+		// }
+
 	}
 
 ?>

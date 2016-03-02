@@ -89,10 +89,11 @@
 			$this->assertEquals($test_patron2, $result);
 		}
 
-		function test_delete()
-		{
-
-		}
+		// function test_delete()
+		// {
+		// 	//Arrange
+		// 	$name = "Yvonna Contreras";
+		// }
 
 		function test_update()
 		{

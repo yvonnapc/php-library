@@ -15,6 +15,9 @@
     Request::enableHttpMethodParameterOverride();
 
 	$app->get('/', function() use($app){
+		$new_book = new Book ($_POST['name']);
+		$new_book->save();
+		$new_book->addToInventory();
 		return $app['twig']->render('index.html.twig');
 	});
 

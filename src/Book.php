@@ -33,7 +33,24 @@
 			VALUES
 			('{$this->getTitle()}')"
 		);
-			$this->id = $GLOBALS['DB']->lastInsertId();
+
+		$this->id = $GLOBALS['DB']->lastInsertId();
+
+		}
+
+		function receiveGoods()
+		{
+			// $GLOBALS['DB']->exec(
+			// 	"INSERT INTO copies
+			// 	 (book_id, checked_out)
+			// 	 VALUES
+			// 	 ({$book_id}, 0)"
+			// );
+		}
+
+		function getAvailable()
+		{
+
 		}
 
 		static function getAll()
@@ -51,8 +68,9 @@
 
 		static function deleteAll()
 		{
-			$GLOBALS['DB']->exec("DELETE FROM books");
-			$GLOBALS['DB']->exec("DELETE FROM authors_books");
+			$GLOBALS['DB']->exec("DELETE FROM books;");
+			$GLOBALS['DB']->exec("DELETE FROM authors_books;");
+			$GLOBALS['DB']->exec("DELETE FROM copies;");
 		}
 
 		static function find($search_id)
@@ -109,6 +127,11 @@
 		{
 			$GLOBALS['DB']->exec("UPDATE books SET title = '{$new_title}' WHERE id = {$this->getId()};");
 			$this->setTitle($new_title);
+		}
+
+		function checkout()
+		{
+
 		}
 
 	}
