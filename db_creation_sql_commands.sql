@@ -29,8 +29,9 @@ WHERE authors.id = 50;
 
 
 
-    DELETE c, rest, rev
-    FROM cuisines c
-    LEFT OUTER JOIN restaurants rest ON c.id = rest.cuisine_id
-    LEFT OUTER JOIN reviews rev ON rest.id = rev.restaurant_id
-    WHERE c.id = {$this->getId()};
+
+    SELECT authors.*
+     FROM books
+     JOIN authors_books ON (books.id = authors_books.book_id)
+     JOIN authors ON authors_books.author_id = authors.id
+     WHERE books.id = 293;

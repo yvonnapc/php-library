@@ -67,11 +67,11 @@
 		}
 		function delete()
 		{
-			$GLOBALS['DB']->exec(
-			"DELETE a, ab
-			FROM authors a
-			JOIN authors_books ab ON (a.id = ab.author_id)
-			WHERE a.id = {$this->getId()}");
+			// $GLOBALS['DB']->exec(
+			// "DELETE a, ab
+			// FROM authors a
+			// JOIN authors_books ab ON (a.id = ab.author_id)
+			// WHERE a.id = {$this->getId()}");
 		}
 	}
  ?>

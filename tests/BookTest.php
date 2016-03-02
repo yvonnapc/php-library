@@ -87,6 +87,24 @@
 			$this->assertEquals($test_book2, $result);
 		}
 
+		function test_addAuthors_getAuthor()
+		{
+			//Arrange
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$name = "Jason Awbrey";
+			$test_author = new Author($name);
+			$test_author->save();
+
+			//Act
+			$test_book->addAuthor($test_author->getId());
+			$result = $test_book->getAuthors();
+
+			//Assert
+			$this->assertEquals("Jason Awbrey", $result[0]->getName());
+		}
 
 	}
 

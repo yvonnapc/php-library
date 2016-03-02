@@ -82,6 +82,11 @@
 			//Assert
 			$this->assertEquals($test_author, $result);
 		}
+
+		function test_delete()
+		{
+
+		}
 	}
 
 ?>
