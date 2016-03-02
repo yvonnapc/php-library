@@ -106,6 +106,22 @@
 			$this->assertEquals("Jason Awbrey", $result[0]->getName());
 		}
 
+		function test_update()
+		{
+			//Arrange
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$new_title = "Not Cathedral";
+
+			//Act
+			$test_book->update($new_title);
+
+			//Assert
+			$this->assertEquals("Not Cathedral", $test_book->getTitle());
+		}
+
 	}
 
 ?>

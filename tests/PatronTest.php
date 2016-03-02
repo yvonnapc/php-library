@@ -93,6 +93,22 @@
 		{
 
 		}
+
+		function test_update()
+		{
+			//Arrange
+			$name = "Yvonna Contreras";
+			$test_patron = new Patron($name);
+			$test_patron->save();
+
+			$new_name = "Jason Awbrey";
+
+			//Act
+			$test_patron->update($new_name);
+
+			//Assert
+			$this->assertEquals("Jason Awbrey", $test_patron->getName());
+		}
 	}
 
 ?>
