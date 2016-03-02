@@ -54,9 +54,22 @@
 			$GLOBALS['DB']->exec("DELETE FROM patrons;");
 		}
 
-		static function delete()
+		function delete()
 		{
-			$GLOBALS['DB']->exec("DELETE FROM patrons WHERE id = {$this->findId()};");
+			// $GLOBALS['DB']->exec("DELETE FROM patrons WHERE id = {$this->findId()};");
+		}
+
+		static function find($search_id)
+		{
+			// $found_patron = null;
+			// $patrons = Patron::getAll();
+			// foreach($patrons as $patron){
+			// 	$patron_id = $patron->getId();
+			// 	if ($patron_id == $search_id)
+			// 		{
+			// 			$found_patron = $patron;
+			// 		}
+			// } return $found_patron;
 		}
 	}
  ?>

@@ -70,6 +70,24 @@
 			//Assert
 			$this->assertEquals([], $result);
 		}
+
+		function test_find()
+		{
+			//Arrange
+			$name = "Cathedral";
+			$test_patron = new Book($name);
+			$test_patron->save();
+
+			$name = "Moby Dick";
+			$test_patron2 = new Book($name);
+			$test_patron2->save();
+
+			//Act
+			$result = Patron::find($test_patron2->getId());
+
+			//Assert
+			$this->assertEquals($test_patron2, $result);
+		}
 	}
 
 ?>
