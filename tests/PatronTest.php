@@ -14,6 +14,8 @@
 	{
 		protected function tearDown()
 		{
+			Book::deleteAll();
+			Author::deleteAll();
 			Patron::deleteAll();
 		}
 

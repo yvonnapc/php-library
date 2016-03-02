@@ -2,7 +2,7 @@ CREATE DATABASE library;
 
 USE library;
 
-CREATE TABLE book (id serial PRIMARY KEY, title VARCHAR (255));
+CREATE TABLE books (id serial PRIMARY KEY, title VARCHAR (255));
 
 CREATE TABLE authors (id serial PRIMARY KEY, name VARCHAR(255));
 
