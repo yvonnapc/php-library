@@ -80,7 +80,7 @@
 			$result = Author::find($test_author->getId());
 
 			//Assert
-			$this->assertEquals([$test_author], $result);
+			$this->assertEquals($test_author, $result);
 		}
 	}
 
