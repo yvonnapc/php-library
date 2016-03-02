@@ -68,6 +68,24 @@
 			//Assert
 			$this->assertEquals([], $result);
 		}
+
+		function test_find()
+		{
+			//Arrange
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$title = "Moby Dick";
+			$test_book2 = new Book($title);
+			$test_book2->save();
+
+			//Act
+			$result = Book::find($test_book2->getId());
+
+			//Assert
+			$this->assertEquals($test_book2, $result);
+		}
 	}
 
 ?>
