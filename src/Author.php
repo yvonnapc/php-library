@@ -65,5 +65,9 @@
 			}
 			return $found_author;
 		}
+		static function delete()
+		{
+			$GLOBALS['DB']->exec("DELETE FROM authors WHERE id = {$this->findId()};");
+		}
 	}
  ?>

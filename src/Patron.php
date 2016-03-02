@@ -53,5 +53,10 @@
 		{
 			$GLOBALS['DB']->exec("DELETE FROM patrons;");
 		}
+
+		static function delete()
+		{
+			$GLOBALS['DB']->exec("DELETE FROM patrons WHERE id = {$this->findId()};");
+		}
 	}
  ?>

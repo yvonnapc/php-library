@@ -66,5 +66,9 @@
 					}
 			} return $found_book;
 		}
+		static function delete()
+		{
+			$GLOBALS['DB']->exec("DELETE FROM books WHERE id = {$this->getId()};");
+		}
 	}
  ?>
