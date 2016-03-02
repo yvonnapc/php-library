@@ -23,7 +23,7 @@
 		{
 			//Arrange
 			$name = "Jason Awbrey";
-			$test_author = new Book($name);
+			$test_author = new Author($name);
 			$test_author->save();
 
 			//Act
