@@ -75,11 +75,11 @@
 		{
 			//Arrange
 			$name = "Cathedral";
-			$test_patron = new Book($name);
+			$test_patron = new Patron($name);
 			$test_patron->save();
 
 			$name = "Moby Dick";
-			$test_patron2 = new Book($name);
+			$test_patron2 = new Patron($name);
 			$test_patron2->save();
 
 			//Act
