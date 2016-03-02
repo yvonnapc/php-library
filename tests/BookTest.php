@@ -87,7 +87,7 @@
 			$this->assertEquals($test_book2, $result);
 		}
 
-		function test_addAuthors_getAuthor()
+		function test_addAuthor_getAuthors()
 		{
 			//Arrange
 			$title = "Cathedral";

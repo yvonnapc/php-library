@@ -80,17 +80,6 @@
 			);
 		}
 
-		// function getAuthor()
-		// {
-		// 	$author = $GLOBALS['DB']->query(
-		// 		"SELECT name
-		// 		 FROM authors
-		// 		 JOIN authors_books ON authors.id = authors_books.author_id
-		// 		 WHERE authors_books.book_id = {$this->getId()}"
-		// 	);
-		// 	return $author;
-		// }
-
 		function getAuthors()
 		{
 			$query = $GLOBALS['DB']->query(
@@ -100,16 +89,15 @@
 				 JOIN authors ON (authors_books.author_id = authors.id)
 				 WHERE books.id = {$this->getId()}"
 			);
-			$returned_authors = [];
+			$authors = [];
 			foreach($query as $author)
 			{
 				$name = $author['name'];
 				$id = $author['id'];
 				$new_author = new Author($name, $id);
-				$returned_authors[] = $new_author;
+				$authors[] = $new_author;
 			}
-			var_dump($returned_authors);
-			return $returned_authors;
+			return $authors;
 		}
 
 		function delete()

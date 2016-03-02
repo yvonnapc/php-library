@@ -85,7 +85,23 @@
 
 		function test_delete()
 		{
+			//Arrange
+			$name = "Jason Awbrey";
+			$test_author = new Author($name);
+			$test_author->save();
 
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$test_book->addAuthor($test_author->getId());
+
+			//Act
+			$test_author->delete();
+			$result = $test_book->getAuthors();
+
+			//Assert
+			$this->assertEquals([],$result);
 		}
 	}
 
