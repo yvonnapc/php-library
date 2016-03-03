@@ -45,7 +45,6 @@ localhost:800/patron/1/catalog/13
 
 Post Routes
 
-(render search.html.twig) <- for adding a new book
 
 localhost:800/patron/1/catalog/13/checkout
 (render search.html.twig)<- for checking a book out

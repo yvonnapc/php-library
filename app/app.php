@@ -44,6 +44,17 @@
 		return $app['twig']->render('book.html.twig', array('book' => $book, 'authors' => $authors, 'librarian' => TRUE));
 	});
 
+	$app->post("/librarian/catalog/{bid}", function($bid) use($app){
+		$book = Book::find($bid);
+		$number_of_copies_received = $_POST['num_copies'];
+		for($i = 1; $i<=$number_of_copies_received; $i++)
+		{
+			$book->receiveGoods();
+		}
+		$authors = $book->getAuthors();
+		return $app['twig']->render('book.html.twig', array('book' => $book, 'authors' => $authors, 'librarian' => TRUE));
+	});
+
 	$app->patch("/librarian/catalog/{bid}", function($bid) use($app){
 		$book = Book::find($bid);
 		$book->update($_POST['title']);
@@ -103,6 +114,21 @@
 		$patron = Patron::find($pid);
 		$books = Book::searchByAuthor("%$search_term%");
 		return $app['twig']->render('catalog.html.twig', array('patron' => $patron, 'books' => $books));
+	});
+
+	$app->get("/patron/{pid}/catalog/{bid}", function($pid, $bid) use($app){
+		$book = Book::find($bid);
+		$authors = $book->getAuthors();
+		$patron = Patron::find($pid);
+		return $app['twig']->render('book.html.twig', array('patron' => $patron, 'book' => $book, 'authors' => $authors));
+	});
+
+	$app->post("/patron/{pid}/catalog/{bid}/checkout", function($pid, $bid) use($app){
+		$checkout_date = $_POST['date'];
+		$book = Book::find($bid);
+		$book->checkout($checkout_date, $pid);
+		$patron = Patron::find($pid);
+		return $app['twig']->render('search.html.twig', array('patron' => $patron));
 	});
 
 

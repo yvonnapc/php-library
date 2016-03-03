@@ -16,10 +16,12 @@
         {% else %}
         <p>Oops, the library needs to add authors to this book!</p>
         {% endif %}
+        <h3>Number of copies available:</h3>
+        <h4>{{book.getAvailable}}</h4>
 
         {% if librarian %}
 
-        <h4>Edit this Title</h4>
+        <h5>Edit this Title</h5>
         <form action="/librarian/catalog/{{ book.getId }}" method="post">
             <input name="_method" type="hidden" value="patch">
               <label for="author">Edit Title</label>
@@ -28,6 +30,25 @@
             <button type="submit">Submit</button>
         </form>
 
+        <h5>Add a new copy to inventory</h5>
+        <form action="/librarian/catalog/{{book.getId}}" method="post">
+            <label for="num_copies"># of copies</label>
+            <input type="number" name="num_copies">
+            <button type="submit" name="button">Submit</button>
+        </form>
+
         {% endif %}
+
+        {% if patron %}
+            <h3>Book Checkout</h3>
+            <form action="/patron/{{ patron.getId }}/catalog/{{ book.getId }}/checkout" method="post">
+                <input name="date" type="date">
+                <button type="submit">Checkout</button>
+            </form>
+
+
+        {% endif %}
+
+        <h2><a href='/'>Home</a></h2>
     </body>
 </html>
