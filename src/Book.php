@@ -186,7 +186,19 @@
 
 	 static function searchByTitle($search_term)
 	 {
-
+		 $returned_books = $GLOBALS['DB']->query(
+		 "SELECT books.*
+		 FROM books
+		 WHERE books.title LIKE '{$search_term}';"
+	 );
+	 $books = array();
+		foreach($returned_books as $book) {
+				$title = $book['title'];
+				$id = $book['id'];
+				$new_book = new Book($title, $id);
+				array_push($books, $new_book);
+		}
+		return $books;
 	 }
 
 	}
