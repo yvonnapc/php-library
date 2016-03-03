@@ -88,12 +88,52 @@
 			//Assert
 			$this->assertEquals($test_patron2, $result);
 		}
+		function test_delete_checkoutHistoryRemoved()
+		{
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
 
-		// function test_delete()
-		// {
-		// 	//Arrange
-		// 	$name = "Yvonna Contreras";
-		// }
+			$name = "Jason Awbrey";
+			$test_author = new Author($name);
+			$test_author->save();
+
+			$test_book->addAuthor($test_author->getId());
+			$test_book->receiveGoods();
+
+			$name = "Jason Awbrey";
+			$test_patron = new Patron($name);
+			$test_patron->save();
+
+			//Act
+			$test_book->checkout("2016-03-02", $test_patron->getId());
+			$test_patron->delete();
+			$result = $test_patron->checkoutHistory();
+
+			//Assert
+			$this->assertEquals([], $result);
+
+		}
+
+
+		function test_delete()
+		{
+			//Arrange
+			$name = "Yvonna Contreras";
+			$test_patron = new Patron($name);
+			$test_patron->save();
+
+			$name = "Jason Awbrey";
+			$test_patron2 = new Patron($name);
+			$test_patron2->save();
+
+			//Act
+			$test_patron->delete();
+
+			//Assert
+			$this->assertEquals([$test_patron2], Patron::getAll());
+
+		}
 
 		function test_update()
 		{
