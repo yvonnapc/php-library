@@ -7,47 +7,66 @@
     <title>Catalog</title>
   </head>
   <body>
-    {% if patron %}
-    <h1>Search for a book:</h1>
-      <form action="/patron/{{patron.getId}}/catalog/search_by_title">
-        <label for="title">Title</label>
-        <input id="title" name = "title" type="text">
 
-        <button type="submit">Search</button>
-      </form>
+     <div class="container">
+            {% if patron %}
+            <h1>Search for a book:</h1>
+              <form action="/patron/{{patron.getId}}/catalog/search_by_title">
+                <label for="title">Title</label>
+                <input id="title" name = "title" type="text">
 
-      <form action="/patron/{{patron.getId}}/catalog/search_by_author">
-        <label for="author">Author</label>
-        <input id="author" name = "author" type="text">
+                <button type="submit">Search</button>
+              </form>
 
-        <button type="submit">Search</button>
-      </form>
+              <form action="/patron/{{patron.getId}}/catalog/search_by_author">
+                <label for="author">Author</label>
+                <input id="author" name = "author" type="text">
 
-      <a href="patron/{{patron.getId}}/catalog"><button type="button">Catalog</button></a>
+                <button type="submit">Search</button>
+              </form>
 
-      <h2><a href='/'>Home</a></h2>
+              <a href="/patron/{{patron.getId}}/catalog"><button type="button">Catalog</button></a>
 
-    {% endif %}
+              <h2><a href='/'>Home</a></h2>
 
-    {% if librarian %}
-    <form action="/librarian/catalog/search_by_title">
-      <label for="title">Title</label>
-      <input id="title" name = "title" type="text">
+            {% endif %}
 
-      <button type="submit">Search</button>
-    </form>
+            {% if librarian %}
 
+            <h3>Search the Catalog</h3>
+            <form action="/librarian/catalog/search_by_title">
+              <label for="title">Titles</label>
+              <input id="title" name = "title" type="text">
 
-    <form action="/librarian/catalog/search_by_author">
-      <label for="author">Author</label>
-      <input id="author" name = "author" type="text">
+              <button type="submit">Search</button><br>
+            </form>
 
-      <button type="submit">Search</button>
-    </form>
+            <form action="/librarian/catalog/search_by_author">
+              <label for="author">Author</label>
+              <input id="author" name = "author" type="text">
 
-    <h2><a href='/'>Home</a></h2>
+              <button type="submit">Search</button><br>
+            </form>
 
-    {% endif %}
+            <h3>Add a Book</h3>
+            <form action="/librarian/catalog/search" method="post">
+              <label for="title">Title</label>
+              <input id="title" name = "title" type="text">
+
+              <label for="author">Author</label>
+              <input id="author" name = "author" type="text">
+
+              <button type="submit">Add Book</button>
+            </form>
+
+            <br>
+
+            <a href="/librarian/catalog"><button type="button">Catalog</button></a>
+
+            <h2><a href='/'>Home</a></h2>
+
+            {% endif %}
+    </div>
 
 
   </body>

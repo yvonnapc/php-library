@@ -5,10 +5,20 @@
         <title></title>
     </head>
     <body>
-        <ul>
-            {% for book in books %}
-            <li><a href="/catalog/{{patron.getId}}/{{book.getId()}}">{{book.getTitle}}</a></li>
-            {% endfor %}
-        </ul>
+        {% if patron %}
+            <ul>
+                {% for book in books %}
+                <li><a href="/patron/{{patron.getId}}/catalog/{{book.getId()}}">{{book.getTitle}}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif%}
+
+        {% if librarian %}
+            <ul>
+                {% for book in books %}
+                <li><a href="/librarian/catalog/{{book.getId()}}">{{book.getTitle}}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </body>
 </html>

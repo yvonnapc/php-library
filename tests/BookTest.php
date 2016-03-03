@@ -200,7 +200,7 @@
 			$test_book->addAuthor($test_author->getId());
 			$test_book2->addAuthor($test_author->getId());
 
-			$search_term = "aso";
+			$search_term = "Aso";
 
 			//Act
 			$result = Book::searchByAuthor("%$search_term%");
