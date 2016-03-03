@@ -148,9 +148,8 @@
 			);
 
 			$query_processed = $query->fetchAll(PDO::FETCH_ASSOC);
-			//var_dump($query_processed);
 			$copy_id = $query_processed[0]['id'];
-
+			
 			$GLOBALS['DB']->query(
 				"UPDATE copies
 				SET checked_out = 1
@@ -160,7 +159,7 @@
 			$GLOBALS['DB']->exec(
 				"INSERT INTO checkouts
 				 (book_id, copy_id, patron_id, checkout_date)
-				 VALUES ({$this->getId()}, {$copy_id}, {$pid},{$checkout_date});"
+				 VALUES ({$this->getId()}, {$copy_id}, {$pid},'{$checkout_date}');"
 			);
 
 		}

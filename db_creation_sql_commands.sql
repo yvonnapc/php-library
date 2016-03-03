@@ -16,7 +16,27 @@ CREATE TABLE copies (id serial PRIMARY KEY, book_id int, checked_out BOOLEAN);
 CREATE TABLE authors_books (id serial PRIMARY KEY, author_id int, book_id int);
 
 
-SELECT b.title, co.checkout_date
-FROM checkouts co
-JOIN books b ON co.book_id = b.id
-WHERE co.patron_id = 117;
+
+SELECT books.title, checkouts.checkout_date
+FROM books JOIN checkouts
+ON books.id = checkouts.book_id
+WHERE checkouts.patron_id = {$this->getId()};
+
+
+SELECT authors.*
+ FROM books
+ JOIN authors_books ON (books.id = authors_books.book_id)
+ JOIN authors ON (authors_books.author_id = authors.id)
+ WHERE books.id = {$this->getId()}
+
+
+
+ SELECT books.*
+  FROM checkouts
+  JOIN books ON (checkouts.book_id = books.id)
+  WHERE checkouts.patron_id = 1;
+
+  SELECT checkouts.*
+   FROM checkouts
+   JOIN books ON (checkouts.book_id = books.id)
+   WHERE checkouts.patron_id = 1;

@@ -174,15 +174,12 @@
 
 			//Act
 			$test_book->checkout("2016-03-02", $test_patron->getId());
-			$getHistory = $test_patron->checkoutHistory();
+			$result = $test_patron->checkoutHistory();
 
-			$result = [];
 
-			$result[] = $getHistory[0];
-			$result[] = $getHistory[0];
 
 			//Assert
-			$this->assertEquals(["Moby Dick","2016-03-02"], $result);
+			$this->assertEquals([['title' =>'Moby Dick','checkout_date' =>'2016-03-02']], $result);
 		}
 
 	}
