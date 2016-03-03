@@ -230,6 +230,39 @@
 
 		}
 
+		function test_delete()
+		{
+			//Arrange
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			//Act
+			$test_book->delete();
+			$result = Book::getAll();
+
+			//Assert
+			$this->assertEquals([], $result);
+		}
+
+		function test_deleteCopies()
+		{
+			//Arrange
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$test_book->receiveGoods();
+
+			//Act
+			$test_book->delete();
+			$result = $test_book->getAvailable();
+
+			//Assert
+			$this->assertEquals(0, $result);
+
+		}
+
 
 	}
 

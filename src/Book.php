@@ -128,12 +128,22 @@
 
 		function delete()
 		{
-			// $GLOBALS['DB']->exec("DELETE FROM books WHERE id = {$this->getId()};");
+			// $GLOBALS['DB']->exec(
+			// 	"DELETE FROM books
+			// 	JOIN copies ON (books.id = copies.book_id)
+			// 	WHERE id = {$this->getId()};"
+			// );
+
+			$GLOBALS['DB']->exec("DELETE FROM books WHERE id = {$this->getId()};");
+			$GLOBALS['DB']->exec("DELETE FROM copies WHERE book_id = {$this->getId()};");
 		}
 
 		function update($new_title)
 		{
-			$GLOBALS['DB']->exec("UPDATE books SET title = '{$new_title}' WHERE id = {$this->getId()};");
+			$GLOBALS['DB']->exec(
+				"UPDATE books
+				 SET title = '{$new_title}'
+				 WHERE id = {$this->getId()};");
 			$this->setTitle($new_title);
 		}
 
