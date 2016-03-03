@@ -153,10 +153,31 @@
 			//Assert
 			$this->assertEquals(1, $result);
 		}
-		// function test_checkout()
-		// {
-		//
-		// }
+
+		function test_checkout()
+		{
+			//Arrange
+			$title = "Cathedral";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$name = "Jason Awbrey";
+			$test_author = new Author($name);
+			$test_author->save();
+
+			$test_book->addAuthor($test_author->getId());
+			$test_book->receiveGoods();
+
+			$name = "Jason Awbrey";
+			$test_patron = new Patron($name);
+			$test_patron->save();
+
+			//Act
+			$test_book->checkout("2016-03-02", $test_patron->getId());
+			$result = $test_patron->checkoutHistory();
+			//Assert
+			$this->assertEquals()
+		}
 
 	}
 

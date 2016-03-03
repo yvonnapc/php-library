@@ -21,6 +21,12 @@
 		return $app['twig']->render('index.html.twig');
 	});
 
+	$app->post('/catalog/{pid}/{bid}', function($pid, $bid) use($app){
+
+		$book = Book::find($bid);
+		$book->checkout($_POST['checkout_date'], $pid)
+		return $app['twig']->render('index.html.twig');
+	});
 	return $app;
 
 ?>

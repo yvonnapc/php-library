@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            {% for book in books %}
+            <li><a href="/catalog/{{patron.getId}}/{{book.getId()}}">{{book.getTitle}}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
