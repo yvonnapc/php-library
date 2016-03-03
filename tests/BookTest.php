@@ -209,6 +209,27 @@
 			$this->assertEquals([$test_book, $test_book2], $result);
 		}
 
+		function test_searchByTitle()
+		{
+			//Arrange
+			$title = "Moby Dick";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$title = "Cathedral";
+			$test_book2 = new Book($title);
+			$test_book2->save();
+
+			$search_term = "ath";
+
+			//Act
+			$result = Book::searchByTitle("%$search_term%");
+
+			//Assert
+			$this->assertEquals([$test_book2], $result);
+
+		}
+
 
 	}
 

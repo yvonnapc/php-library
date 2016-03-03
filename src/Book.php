@@ -184,5 +184,10 @@
 			return $books;
 		}
 
+	 static function searchByTitle($search_term)
+	 {
+
+	 }
+
 	}
  ?>
