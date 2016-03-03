@@ -78,6 +78,7 @@
 			$GLOBALS['DB']->exec("DELETE FROM books;");
 			$GLOBALS['DB']->exec("DELETE FROM authors_books;");
 			$GLOBALS['DB']->exec("DELETE FROM copies;");
+			$GLOBALS['DB']->exec("DELETE FROM checkouts");
 		}
 
 		static function find($search_id)
@@ -147,7 +148,7 @@
 			);
 
 			$query_processed = $query->fetchAll(PDO::FETCH_ASSOC);
-
+			//var_dump($query_processed);
 			$copy_id = $query_processed[0]['id'];
 
 			$GLOBALS['DB']->query(
