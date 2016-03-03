@@ -14,3 +14,9 @@ Query OK, 0 rows affected (0.07 sec)
 CREATE TABLE copies (id serial PRIMARY KEY, book_id int, checked_out BOOLEAN);
 
 CREATE TABLE authors_books (id serial PRIMARY KEY, author_id int, book_id int);
+
+
+SELECT b.title, co.checkout_date
+FROM checkouts co
+JOIN books b ON co.book_id = b.id
+WHERE co.patron_id = 117;

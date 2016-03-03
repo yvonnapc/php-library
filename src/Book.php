@@ -138,30 +138,29 @@
 
 		function checkout($checkout_date, $pid)
 		{
-		// 	$copy_id = $GLOBALS['DB']->query(
-		// 		"SELECT id
-		// 		FROM copies
-		// 		WHERE checked_out = 0
-		// 		AND book_id = {$this->getId()}
-		// 		LIMIT 1;"
-		// 	);
-		//
-		//
-		//
-		// 	$GLOBALS['DB']->query(
-		// 		"UPDATE copies
-		// 		SET checked_out = 1
-		// 		WHERE id = {$copy_id}"
-		// 	);
-		//
-		// 	$GLOBALS['DB']->exec(
-		// 	"INSERT INTO checkouts
-		// 	 (book_id, copy_id, patron_id, checkout_date)
-		// 	 VALUES ({$this->getId()}, {$copy_id}, {$pid},{$checkout_date})
-		//
-		// 	"
-		// );
+			$query = $GLOBALS['DB']->query(
+				"SELECT id
+				FROM copies
+				WHERE checked_out = 0
+				AND book_id = {$this->getId()}
+				LIMIT 1;"
+			);
 
+			$query_processed = $query->fetchAll(PDO::FETCH_ASSOC);
+
+			$copy_id = $query_processed[0]['id'];
+
+			$GLOBALS['DB']->query(
+				"UPDATE copies
+				SET checked_out = 1
+				WHERE id = {$copy_id};"
+			);
+
+			$GLOBALS['DB']->exec(
+				"INSERT INTO checkouts
+				 (book_id, copy_id, patron_id, checkout_date)
+				 VALUES ({$this->getId()}, {$copy_id}, {$pid},{$checkout_date});"
+			);
 
 		}
 

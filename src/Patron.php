@@ -83,7 +83,16 @@
 
 		function checkoutHistory()
 		{
-			
+			$query = $GLOBALS['DB']->query(
+				"SELECT b.title, co.checkout_date
+				FROM checkouts co
+				JOIN books b ON co.book_id = b.id
+				WHERE co.patron_id = {$this->getId()};"
+			);
+
+			$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+			return $result;
 		}
 	}
  ?>
