@@ -30,3 +30,43 @@ FROM authors
 JOIN authors_books ON authors.id = authors_books.author_id
 JOIN books ON authors_books.book_id = books.id
 WHERE authors.name LIKE '{$search_term}';
+
+Get Routes
+localhost:8000/librarian/catalog/search
+localhost:800/patron/1/catalog/search
+(render search.html.twig) < for a patron, show checkout history.. also show due date
+... for a librarian, show all overdue books
+
+localhost:8000/librarian/catalog/
+localhost:800/patron/1/catalog/
+(render the catalog.html.twig)
+
+localhost:8000/librarian/catalog/search_by_author
+localhost:800/patron/1/catalog/search_by_author
+(render the catalog.html.twig)
+
+localhost:8000/librarian/catalog/search_by_title
+localhost:800/patron/1/catalog/search_by_title
+(render the catalog.html.twig)
+
+localhost:8000/librarian/catalog/13
+localhost:800/patron/1/catalog/13
+(render book.html.twig) < be sure to list the number of books available
+
+Post Routes
+localhost:8000/librarian/catalog/search
+(render search.html.twig) <- for adding a new book
+
+localhost:800/patron/1/catalog/13/checkout
+(render search.html.twig)<- for checking a book out
+
+localhost:8000/librarian/catalog/13
+(render book.html.twig) <- for adding an author
+
+Patch Routes
+localhost:8000/librarian/catalog/13
+(render book.html.twig) <- for updating the book name
+
+Delete Routes
+localhost:8000/librarian/catalog/13
+(render search.html.twig) <- for a librarian deleting a book

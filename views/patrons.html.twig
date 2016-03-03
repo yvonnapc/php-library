@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/styles.css'>
+    <meta charset="utf-8">
+    <title>Patrons</title>
+  </head>
+  <body>
+    <div class="container">
+          <form action='/patrons' method='post'>
+            <label for='name'>Name:</label>
+             <input id='name' name='name' type='text'><br>
+
+             <button class="info" type='submit'>Add</button>
+         </form>
+
+         {% if patrons is not empty %}
+          <h2>Patrons:</h2>
+          <ul>
+              {% for patron in patrons %}
+              <li><a href="/patron/{{ patron.getId }}/catalog/search"> {{ patron.getName }}</a></li>
+              {% endfor %}
+          </ul>
+         {% endif %}
+
+         <h2><a href='/'>Home</a></h2>
+    </div>
+  </body>
+</html>

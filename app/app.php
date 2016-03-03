@@ -19,6 +19,27 @@
     return $app['twig']->render('index.html.twig');
   });
 
+	$app->get("/librarian/catalog/search", function() use($app){
+		return $app['twig']->render('search.html.twig', array('librarian' => True));
+	});
+	
+	$app->get("/patrons", function() use($app){
+		return $app['twig']->render('patrons.html.twig', array('patrons' => Patron::getAll()));
+	});
+
+	$app->post("/patrons", function() use($app){
+		$patron = new Patron($_POST['name']);
+		$patron->save();
+		return $app['twig']->render('patrons.html.twig', array('patrons' => Patron::getAll()));
+	});
+
+	$app->get("/patron/{id}/catalog/search", function($id) use($app){
+		$patron = Patron::find($id);
+		return $app['twig']->render('search.html.twig', array('patron' => $patron));
+	});
+
+
+
 
 
 	// For Checking A Book Out

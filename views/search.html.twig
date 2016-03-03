@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/styles.css'>
+    <meta charset="utf-8">
+    <title>Catalog</title>
+  </head>
+  <body>
+    {% if patron %}
+    <h1>Search for a book:</h1>
+      <form action="/patron/{{patron.getId}}/catalog/search_by_title">
+        <label for="title">Title</label>
+        <input id="title" name = "title" type="text">
+
+        <button type="submit">Search</button>
+      </form>
+
+      <form action="/patron/{{patron.getId}}/catalog/search_by_author">
+        <label for="author">Author</label>
+        <input id="author" name = "author" type="text">
+
+        <button type="submit">Search</button>
+      </form>
+
+      <a href="patron/{{patron.getId}}/catalog"><button type="button">Catalog</button></a>
+
+      <h2><a href='/'>Home</a></h2>
+
+    {% endif %}
+
+    {% if librarian %}
+    <form action="/librarian/catalog/search_by_title">
+      <label for="title">Title</label>
+      <input id="title" name = "title" type="text">
+
+      <button type="submit">Search</button>
+    </form>
+
+
+    <form action="/librarian/catalog/search_by_author">
+      <label for="author">Author</label>
+      <input id="author" name = "author" type="text">
+
+      <button type="submit">Search</button>
+    </form>
+
+    <h2><a href='/'>Home</a></h2>
+
+    {% endif %}
+
+
+  </body>
+</html>
