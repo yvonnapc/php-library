@@ -30,11 +30,25 @@
             <button type="submit">Submit</button>
         </form>
 
+        <h5>Add an Author to this book</h5>
+        <form action="/librarian/catalog/add_author/{{ book.getId }}" method="post">
+              <label for="add_author">Add Author</label>
+              <input id="add_author" name = "add_author" type="text">
+
+            <button type="submit">Submit</button>
+        </form>
+
         <h5>Add a new copy to inventory</h5>
         <form action="/librarian/catalog/{{book.getId}}" method="post">
             <label for="num_copies"># of copies</label>
             <input type="number" name="num_copies">
             <button type="submit" name="button">Submit</button>
+        </form>
+
+        <form action="/librarian/catalog/search" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <input type="hidden" name="book_id" value="{{book.getId}}">
+            <button type="submit" name="delete">Delete Book (and all copies!)</button>
         </form>
 
         {% endif %}

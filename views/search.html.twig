@@ -29,6 +29,14 @@
 
               <h2><a href='/'>Home</a></h2>
 
+              <h3>Checkout History</h3>
+
+              {% if checkouts is not empty%}
+                <ul>
+                    {% for checkout in checkouts%}
+                    <li>{{ checkout.checkout_date}} - {{ checkout.title }}</li>
+                    {% endfor %}
+                {% endif %}
             {% endif %}
 
             {% if librarian %}
@@ -62,6 +70,7 @@
             <br>
 
             <a href="/librarian/catalog"><button type="button">Catalog</button></a>
+
 
             <h2><a href='/'>Home</a></h2>
 
