@@ -17,26 +17,16 @@ CREATE TABLE authors_books (id serial PRIMARY KEY, author_id int, book_id int);
 
 
 
-SELECT books.title, checkouts.checkout_date
-FROM books JOIN checkouts
-ON books.id = checkouts.book_id
-WHERE checkouts.patron_id = {$this->getId()};
+INSERT INTO books (title) VALUES ("Moby Dick");
+INSERT INTO books (title) VALUES ("Cathedral");
 
+INSERT INTO authors (name) VALUES ("Jason Awbrey");
+INSERT INTO authors (name) VALUES ("Yvonna Contreras");
 
-SELECT authors.*
- FROM books
- JOIN authors_books ON (books.id = authors_books.book_id)
- JOIN authors ON (authors_books.author_id = authors.id)
- WHERE books.id = {$this->getId()}
+INSERT INTO authors_books (book_id, author_id) VALUES ();
 
-
-
- SELECT books.*
-  FROM checkouts
-  JOIN books ON (checkouts.book_id = books.id)
-  WHERE checkouts.patron_id = 1;
-
-  SELECT checkouts.*
-   FROM checkouts
-   JOIN books ON (checkouts.book_id = books.id)
-   WHERE checkouts.patron_id = 1;
+SELECT books.*
+FROM authors
+JOIN authors_books ON authors.id = authors_books.author_id
+JOIN books ON authors_books.book_id = books.id
+WHERE authors.name LIKE "%'{$search_term}'%";

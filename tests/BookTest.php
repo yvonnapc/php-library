@@ -182,6 +182,34 @@
 			$this->assertEquals([['title' =>'Moby Dick','checkout_date' =>'2016-03-02']], $result);
 		}
 
+		function test_searchByAuthor()
+		{
+			//Arrange
+			$title = "Moby Dick";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$title = "Cathedral";
+			$test_book2 = new Book($title);
+			$test_book2->save();
+
+			$name = "Jason Awbrey";
+			$test_author = new Author($name);
+			$test_author->save();
+
+			$test_book->addAuthor($test_author->getId());
+			$test_book2->addAuthor($test_author->getId());
+
+			$search_term = "aso";
+
+			//Act
+			$result = Book::searchByAuthor($search_term);
+
+			//Assert
+			$this->assertEquals($test_author, $result);
+		}
+
+
 	}
 
 ?>

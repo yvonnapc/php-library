@@ -177,6 +177,7 @@
 			//Assert
 			$this->assertEquals([['title' =>'Cathedral','checkout_date' =>'2016-03-02']], $result);
 		}
+
 	}
 
 ?>

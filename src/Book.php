@@ -149,7 +149,7 @@
 
 			$query_processed = $query->fetchAll(PDO::FETCH_ASSOC);
 			$copy_id = $query_processed[0]['id'];
-			
+
 			$GLOBALS['DB']->query(
 				"UPDATE copies
 				SET checked_out = 1
@@ -162,6 +162,11 @@
 				 VALUES ({$this->getId()}, {$copy_id}, {$pid},'{$checkout_date}');"
 			);
 
+		}
+
+		static function searchByAuthor()
+		{
+			
 		}
 
 	}

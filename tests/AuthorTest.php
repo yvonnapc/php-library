@@ -119,6 +119,26 @@
 			//Assert
 			$this->assertEquals("Junot Diaz", $test_author->getName());
 		}
+
+		function test_searchByAuthor()
+		{
+			//Arrange
+			$title = "Moby Dick";
+			$test_book = new Book($title);
+			$test_book->save();
+
+			$name = "Jason Awbrey";
+			$test_author = new Author($name);
+			$test_author->save();
+
+			$test_book->addAuthor($test_author->getId());
+
+			//Act
+			$result = Book::find($test_author->getId());
+
+			//Assert
+			$this->assertEquals($test_author, $result);
+		}
 	}
 
 ?>
