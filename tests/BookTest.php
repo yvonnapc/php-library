@@ -157,7 +157,7 @@
 		function test_checkout()
 		{
 			//Arrange
-			$title = "Cathedral";
+			$title = "Moby Dick";
 			$test_book = new Book($title);
 			$test_book->save();
 
@@ -175,8 +175,9 @@
 			//Act
 			$test_book->checkout("2016-03-02", $test_patron->getId());
 			$result = $test_patron->checkoutHistory();
+
 			//Assert
-			$this->assertEquals()
+			$this->assertEquals(["Moby Dick","2016-03-02"], $result);
 		}
 
 	}
