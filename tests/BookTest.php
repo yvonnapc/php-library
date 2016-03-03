@@ -203,7 +203,7 @@
 			$search_term = "aso";
 
 			//Act
-			$result = Book::searchByAuthor($search_term);
+			$result = Book::searchByAuthor("%$search_term%");
 
 			//Assert
 			$this->assertEquals([$test_book, $test_book2], $result);

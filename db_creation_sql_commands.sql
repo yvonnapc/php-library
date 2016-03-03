@@ -29,4 +29,4 @@ SELECT books.*
 FROM authors
 JOIN authors_books ON authors.id = authors_books.author_id
 JOIN books ON authors_books.book_id = books.id
-WHERE authors.name LIKE "%'{$search_term}'%";
+WHERE authors.name LIKE '{$search_term}';
