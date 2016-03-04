@@ -141,7 +141,9 @@
 	});
 
 	$app->post("/patron/{pid}/catalog/{bid}/checkout", function($pid, $bid) use($app){
-		$checkout_date = $_POST['date'];
+		$checkout_date = date("Y-m-d");
+		$due_date = strtotime(date("Y-m-d", strtotime($checkout_date)) . " +1 month");
+		$due_date = date("Y-m-d",$due_date);
 		$book = Book::find($bid);
 		$book->checkout($checkout_date, $pid);
 		$patron = Patron::find($pid);

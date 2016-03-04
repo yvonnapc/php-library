@@ -56,7 +56,6 @@
         {% if patron %}
             <h3>Book Checkout</h3>
             <form action="/patron/{{ patron.getId }}/catalog/{{ book.getId }}/checkout" method="post">
-                <input name="date" type="date">
                 <button type="submit">Checkout</button>
             </form>
 
